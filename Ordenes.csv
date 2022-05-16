@@ -1,0 +1,4 @@
+numero,cliente,fecha,codigoComida,cantidad,pagada
+1,Lizzie,16-05-2022,1,3,si
+2,Fredy,17-05-2022,2,1,no
+2,Fredy,17-05-2022,1,1,no

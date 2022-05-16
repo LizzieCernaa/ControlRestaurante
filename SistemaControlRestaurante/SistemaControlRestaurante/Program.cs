@@ -6,7 +6,10 @@ namespace SistemaControlRestaurante
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            DateTime hoy = DateTime.Now;
+            Console.WriteLine((int)hoy.DayOfWeek);
+            Console.ReadKey();
+
         }
     }
 }

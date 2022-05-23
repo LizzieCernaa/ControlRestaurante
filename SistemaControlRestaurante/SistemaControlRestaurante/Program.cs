@@ -7,43 +7,59 @@ namespace SistemaControlRestaurante
     {
         static void Main(string[] args)
         {
-            
+            Console.WriteLine($"********** MENU DEL DIA **********");
+            menuPrincipal();
 
-            imprimirMenu();
-            int menu = int.Parse(Console.ReadLine());
-
-            if (menu == 1) 
-            {
-                menuDia();
-            }
-            
-
-
+            int dayOfWeek = (int)DateTime.Now.DayOfWeek;
+           // ImprimirMenuDia(dayOfWeek);
             Console.ReadKey();
         }
 
-        static void imprimirMenu()
+        static void ImprimirMenuDia( int dayOfWeek) 
         {
+            string ruta = "menu.csv";
+            StreamReader leactor = new StreamReader(ruta);
+            String[] plato;
 
-            Console.WriteLine("---- MENU ----");
-            Console.WriteLine("1. Mostrar menu del dia");
-            Console.WriteLine("10. SALIR");
+            string linea = string.Empty;
 
-        }
-        static void menuDia() 
-        {
-            DateTime hoy = DateTime.Now;
-            Console.WriteLine((int)hoy.DayOfWeek);
-           /// Console.ReadKey();
-           
-            Console.WriteLine("El menu de este dia es: ");
-            Console.ReadLine();
-            int menu;
+            Console.WriteLine($"********** MENU DEL DIA **********");
 
-            using (var fileSream = new FileStream("Menu.cvs", FileMode.Append)) 
+            while ((linea = leactor.ReadLine()) != null) 
             {
-                
+                plato = linea.Split(',');
+                 
+                if (plato[4].Equals ("dia") || dayOfWeek == int.Parse(plato[4])) 
+                {
+                    Console.WriteLine($"{plato[1]}    {plato[2]}     {plato[3]} ");
+                    Console.WriteLine($"--------------------------------------------------------");
+
+                }
             }
+
+            Console.WriteLine($" ************************************************ ");
+            leactor.Close();
         }
+
+        static void MenuControlOrden() 
+        {
+            string ruta = "Ordenes.csv";
+            StreamReader leactor = new StreamReader(ruta);
+            String[] orden;
+
+            string linea = string.Empty;
+
+
+            Console.WriteLine($"**********MENU CONTROL ORDENES **********");
+
+        }
+
+        static void menuPrincipal() 
+        {
+            Console.WriteLine("1. Ver Menu  ");
+            Console.WriteLine("2. Control de Orden");
+            Console.WriteLine("3. Salir");
+        }
+
     }
 }

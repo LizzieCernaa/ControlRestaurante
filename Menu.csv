@@ -1,5 +1,13 @@
 codigo,nombre,precio,tipo,dia
-1,soda,1.00,bebida,lunes
-2,cafe,0.50,bebida,martes
-3,te ,0.75,bebida,miercoles
-4,Refresco,0.65,bebida,jueves
+1,soda,1,bebida,1
+2,cafe,0.5,bebida,2
+3,te ,0.75,bebida,3
+4,Refresco,0.65,bebida,4
+5,Carne,3,PlatoFuerte,1
+6,papas,1.5,Entrada,2
+7,Camarones,4.75,PlatoFuerte,4
+8,Sopa,3.5,PlatoFuerte,3
+9,Pollo,4,PlatoFuerte,5
+10,Pasta,3.75,PlatoFuerte,4
+11,Tacos,3.5,PlatoFuerte,2
+12,licuado,2.5,bebida,5

@@ -1,4 +1,6 @@
-numero,cliente,fecha,codigoComida,cantidad,pagada
-1,Lizzie,16-05-2022,1,3,si
-2,Fredy,17-05-2022,2,1,no
-2,Fredy,17-05-2022,1,1,no
+numero,cliente,fecha,plato,cantidad,precio,subtotal,estado
+1,Lizzie,16-05-2022,1,4,1,,
+2,Fredy,17-05-2022,2,2,0.5,,
+2,Fredy,17-05-2022,1,2,1,,
+3,Emma,23-05-2022,7,4,4.75,,
+3,Emma,23-05-2022,1,3,1,,

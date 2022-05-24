@@ -87,10 +87,26 @@ namespace SistemaControlRestaurante
         static void mostrarOrdenes()
         {
             string ruta = "Ordenes.csv";
-            StreamReader leactor = new StreamReader(ruta);
+            StreamReader lector = new StreamReader(ruta);
             String[] orden;
 
             string linea = string.Empty;
+
+            Console.Clear();
+            Console.WriteLine($"********** MENU DEL DIA **********");
+
+            while ((linea = lector.ReadLine()) != null)
+            {
+                orden = linea.Split(',');
+
+                    Console.WriteLine($"{orden[0].ToUpper()}              {orden[1].ToUpper()}             {orden[2].ToUpper()}         {orden[3].ToUpper()}       {orden[4].ToUpper()}        {orden[5].ToUpper()}        {orden[6].ToUpper()}        {orden[7].ToUpper()}");
+                    Console.WriteLine($"--------------------------------------------------------");
+
+            }
+
+            Console.WriteLine($" ************************************************ ");
+            lector.Close();
+            Console.ReadKey();
         }
 
     }

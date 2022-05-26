@@ -33,11 +33,16 @@ namespace SistemaControlRestaurante
                         ordenes = int.Parse(Console.ReadLine());
 
                     }
-                    else if (opcionControlOrden == 2) 
+                    else if (opcionControlOrden == 2)
                     {
                         Console.WriteLine("Intruduce una fecha");
                         string fecha = Console.ReadLine();
                         mostrarOrdenes(fecha);
+                    }
+                    else if (opcionControlOrden == 3) 
+                    {
+                        Console.WriteLine("Crea tu orden");
+                        string ordenUsu = Console.ReadLine();
                     }
                     Console.ReadKey();
                 }
@@ -79,7 +84,8 @@ namespace SistemaControlRestaurante
             Console.WriteLine($"**********MENU CONTROL ORDENES **********");
             Console.WriteLine("1. Ver todas las ordenes  ");
             Console.WriteLine("2. Buscar orden por fecha");
-            Console.WriteLine("3. Regresar al menu principal");
+            Console.WriteLine("3. Crear una orden");
+            Console.WriteLine("4. Regresar al menu principal");
         }
 
         static void menuPrincipal() 

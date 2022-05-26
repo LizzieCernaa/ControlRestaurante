@@ -1,0 +1,6 @@
+numero,cliente,fecha,plato,cantidad,precio,subtotal,estado
+1,Lizzie,16-05-2022,soda,4,1,4,pagado
+2,Fredy,17-05-2022,café,2,0.5,1,pendiente
+2,Fredy,17-05-2022,soda,2,1,2,pagado
+3,Emma,23-05-2022,camarones,4,4.75,19,pagado
+3,Emma,23-05-2022,soda,3,1,3,

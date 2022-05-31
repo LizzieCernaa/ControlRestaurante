@@ -12,13 +12,14 @@ namespace SistemaControlRestaurante
             int opcionControlOrden = 0;
             int ordenes = 0;
 
-            while (opcion != 3)
+            while (opcion != 4)
             {
                 menuPrincipal();
                 Console.WriteLine("Seleccione una opcion");
                 opcion = int.Parse(Console.ReadLine());
                 if (opcion == 1)
                 {
+                    Console.Clear();
                     int dayOfWeek = (int)DateTime.Now.DayOfWeek;
                     ImprimirMenuDia(dayOfWeek);
                 }
@@ -42,7 +43,12 @@ namespace SistemaControlRestaurante
                     else if (opcionControlOrden == 3)
                     {
                         fecha();
-                       
+
+                    }
+                    else if (opcionControlOrden == 4 ) 
+                    {
+                        menuPrincipal();
+                        Console.WriteLine("Seleccione una opcion");
                     }
 
 
@@ -51,9 +57,14 @@ namespace SistemaControlRestaurante
                 }
                 else if (opcion == 3)
                 {
-                    fracTuras();
-                    Console.WriteLine("Las ventas de este dia son");
-                    int fac = int.Parse(Console.ReadLine());
+
+                    CrearOrden();
+
+                }
+                else if (opcion == 4)
+                {
+                    Environment.Exit(1);
+
                 }
 
             }
@@ -68,7 +79,6 @@ namespace SistemaControlRestaurante
 
             string linea = string.Empty;
 
-            Console.Clear();
             PrintLine();
             PrintRow($"********** MENU DEL DIA **********");
             PrintLine();
@@ -78,14 +88,14 @@ namespace SistemaControlRestaurante
 
                 if (plato[4].Equals("dia") || dayOfWeek == int.Parse(plato[4]))
                 {
-                    PrintRow(plato[1], plato[2], plato[3]);
+                    PrintRow( plato[0],plato[1], plato[2], plato[3]);
                     PrintLine(); 
 
                 }
             }
 
             lector.Close();
-            Console.ReadKey();
+           // Console.ReadKey();
         }
 
         static void MenuControlOrden() 
@@ -168,33 +178,35 @@ namespace SistemaControlRestaurante
             }
         }
 
-        static void fracTuras() 
+        static void CrearOrden() 
         {
-            string ruta = "Facturas.csv";
-            StreamReader lector = new StreamReader(ruta);
-            String[] plato;
-
-            string linea = string.Empty;
-
             Console.Clear();
-            PrintLine();
-            PrintRow($"********** MENU DEL DIA **********");
-            PrintLine();
-            while ((linea = lector.ReadLine()) != null)
+            Console.WriteLine("Ingresa el numero de factura");
+            int numero = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Ingresa el nombre del Cliente");
+            String nombreCliente = Console.ReadLine();
+
+            string platillo = string.Empty;
+
+            while ( platillo.ToUpper() != "C") 
             {
-                plato = linea.Split(',');
 
-                //if (plato[4].Equals("dia") || dayOfWeek == int.Parse(plato[4]))
-                //{
-                //    PrintRow(plato[1], plato[2], plato[3]);
-                //    PrintLine();
+                int dayOfWeek = (int)DateTime.Now.DayOfWeek;
+                ImprimirMenuDia(dayOfWeek);
 
-                //}
+                Console.WriteLine("Seleccione el platillo a ordenar o presione C para cancelar");
+                platillo = Console.ReadLine();
+
+                if (!platillo.ToUpper().Equals("C"))
+                {
+                    Console.WriteLine("Introduce la cantidad de platillo deseado");
+                    int cantidad = int.Parse(Console.ReadLine());
+
+                    Console.Clear();
+                }
             }
 
-
-            lector.Close();
-            Console.ReadKey();
         }
 
         static void fecha() 

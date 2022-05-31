@@ -207,6 +207,14 @@ namespace SistemaControlRestaurante
                 }
             }
 
+            using (StreamWriter escribir = new StreamWriter(@"menu.csv")) 
+            {
+                foreach (string x) 
+                {
+                    escribir.WriteLine(x);
+                }
+
+            }
         }
 
         static void fecha() 

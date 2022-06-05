@@ -53,7 +53,7 @@ namespace SistemaControlRestaurante
 
 
 
-                    Console.ReadKey();
+                  //  Console.ReadKey();
                 }
                 else if (opcion == 3)
                 {
@@ -95,7 +95,7 @@ namespace SistemaControlRestaurante
             }
 
             lector.Close();
-           // Console.ReadKey();
+           Console.ReadKey();
         }
 
         static void MenuControlOrden() 
@@ -207,14 +207,6 @@ namespace SistemaControlRestaurante
                 }
             }
 
-            using (StreamWriter escribir = new StreamWriter(@"menu.csv")) 
-            {
-                foreach (string x) 
-                {
-                    escribir.WriteLine(x);
-                }
-
-            }
         }
 
         static void fecha() 

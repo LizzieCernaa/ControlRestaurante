@@ -11,3 +11,7 @@ codigo,nombre,precio,tipo,dia
 10,Pasta,3.75,PlatoFuerte,4
 11,Tacos,3.5,PlatoFuerte,2
 12,licuado,2.5,bebida,5
+13,maruchan,1,entrada0,6
+14,pupusas,0.5,PlatoFuerte,6
+15,chocolatecaliente,0.75,bebida,7
+16,pollo,3,PlatoFuerte,7

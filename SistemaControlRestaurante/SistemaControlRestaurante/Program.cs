@@ -36,13 +36,13 @@ namespace SistemaControlRestaurante
                     }
                     else if (opcionControlOrden == 2)
                     {
-                        Console.WriteLine("Intruduce una fecha");
+                        Console.WriteLine("Introduce una fecha");
                         string fecha = Console.ReadLine();
                         mostrarOrdenes(fecha);
                     }
                     else if (opcionControlOrden == 3)
                     {
-                        fecha();
+                        VentasDia();
 
                     }
                     else if (opcionControlOrden == 4 ) 
@@ -202,6 +202,11 @@ namespace SistemaControlRestaurante
                 {
                     Console.WriteLine("Introduce la cantidad de platillo deseado");
                     int cantidad = int.Parse(Console.ReadLine());
+                    string nombrePlato = String.Empty;
+                    double precio = 0;
+                    (nombrePlato,precio) = ObtenerPlato(platillo);
+
+                    GuardarOrden($"{numero},{nombreCliente},{DateTime.Now.ToString("dd-MM-yyyy")},{nombrePlato},{cantidad},{precio},{cantidad * precio},pagado");
 
                     Console.Clear();
                 }
@@ -209,15 +214,59 @@ namespace SistemaControlRestaurante
 
         }
 
-        static void fecha() 
+        static void GuardarOrden(string orden)
+        {
+            try
+            {
+                StreamWriter writer = new StreamWriter("Ordenes.csv", true);
+                writer.WriteLine(orden);
+                writer.Flush();
+                writer.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        static (string, double) ObtenerPlato(string codigo)
+        {
+            StreamReader reader = new StreamReader("menu.csv");
+            string nombrePlato = string.Empty;
+            double precio = 0;
+            string linea = string.Empty;
+            bool encontrado = false;
+
+            while ((linea = reader.ReadLine()) != null || encontrado == false)
+            {
+                String[] plato = linea.Split(',');
+
+                if (plato[0].Equals(codigo))
+                {
+                    nombrePlato = plato[1];
+                    precio = double.Parse(plato[2]);
+                    encontrado = true;
+                }
+
+            }
+            reader.Close();
+
+            return (nombrePlato, precio);
+
+        }
+
+
+        static void VentasDia() 
         {
             // int DateTime.Now.ToString();
+            
             string fecha = string.Empty;
             fecha = DateTime.Now.ToString("dd-MM-yyyy");
 ;
-            string ruta = "Facturas.csv";
+            string ruta = "Ordenes.csv";
             StreamReader lector = new StreamReader(ruta);
-            String[] fractura;
+            String[] factura;
 
             string linea = string.Empty;
 
@@ -227,15 +276,17 @@ namespace SistemaControlRestaurante
             PrintLine();
             while ((linea = lector.ReadLine()) != null)
             {
-                fractura = linea.Split(',');
+                factura = linea.Split(',');
 
-                if (fractura[2].Equals("fecha") || (fecha.Equals(fractura[2]) && fractura[7].Equals("pagado")))
+                if (factura[2].Equals("fecha") || (fecha.Equals(factura[2]) && factura[7].Equals("pagado")))
                 {
-                    PrintRow(fractura[1], fractura[2], fractura[3], fractura[4], fractura[5], fractura[6], fractura[7]);
+                    PrintRow(factura[1], factura[2], factura[3], factura[4], factura[5], factura[6], factura[7]);
                     PrintLine();
 
                 }
             }
+            lector.Close();
+            Console.ReadKey();
         }
 
         
